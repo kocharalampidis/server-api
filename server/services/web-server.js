@@ -2,6 +2,7 @@
 const http = require("http");
 const express = require("express");
 const web_server_config = require("../config/web-server");
+const database_config = require("./database");
 const morgan = require("morgan");
 let httpServer;
 
@@ -12,6 +13,12 @@ function initialize() {
 
 		httpServer = http.createServer(app);
 		app.use(morgan("combined")); //shows logger desc.
+
+		app.get("/", async (req, res) => {
+			const result = await database_config.simpleExecute();
+
+			res.send(result);
+		});
 
 		httpServer
 			.listen(web_server_config.port)
