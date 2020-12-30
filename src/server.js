@@ -1,4 +1,5 @@
 /** @format */
+require('dotenv').config();
 
 const http = require('http');
 const express = require('express');
@@ -15,15 +16,11 @@ function initialize() {
 		httpServer = http.createServer(app);
 		app.use(morgan('combined')); //shows logger desc.
 
-		// parse requests of content-type - application/json
-		app.use(bodyParser.json());
-
-		// parse requests of content-type - application/x-www-form-urlencoded
-		app.use(bodyParser.urlencoded({ extended: true }));
-
 		app.get('/', (req, res) => {
 			res.end('Hello World!');
 		});
+
+		require('./app/routes/getItems')(app);
 
 		require('dotenv').config();
 		const port = process.env.port || 5500;
