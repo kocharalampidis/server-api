@@ -1,5 +1,4 @@
 /** @format */
-require('dotenv').config();
 
 const http = require('http');
 const express = require('express');
@@ -22,7 +21,6 @@ function initialize() {
 
 		require('./app/routes/getItems')(app);
 
-		require('dotenv').config();
 		const port = process.env.port || 5500;
 		httpServer
 			.listen(port)

@@ -1,6 +1,6 @@
 /** @format */
 
-const sql = require('./db');
+const sql = require('./dbConnection');
 
 // constructor
 const Customer = function (customer) {

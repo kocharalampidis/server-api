@@ -1,5 +1,4 @@
 /** @format */
-require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -17,7 +16,6 @@ async function startup() {
 		process.exit(1); // Non-zero failure code
 	}
 }
-require('dotenv').config();
 
 startup();
 
